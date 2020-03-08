@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page isELIgnored="false" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,13 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+	<sec:authorize access="isAuthenticated()">
+  		<a class="navbar-brand" href="#">Welcome <sec:authentication property="principal.username" /></a>
+  	</sec:authorize>
+  	
+  	<sec:authorize access="!isAuthenticated()">
+  		<a class="navbar-brand" href="#">Pizza</a>
+  	</sec:authorize>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,27 +30,43 @@
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/home">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/user/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/user/register">Register</a>
-      </li>
+      
+      <sec:authorize access="!isAuthenticated()">
+      	<li class="nav-item">
+        	<a class="nav-link" href="${pageContext.request.contextPath}/user/login">Login</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="${pageContext.request.contextPath}/user/register">Register</a>
+      	</li>
+      </sec:authorize>
+      
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/aboutus">About Us</a>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/contactus">Contact Us</a>
       </li>
+      
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/add">Add Pizza</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/cart/display">Cart</a>
       </li>
+      
+      <sec:authorize access="hasAuthority('admin') and isAuthenticated()">
+     	 <li class="nav-item">
+      	  <a class="nav-link" href="${pageContext.request.contextPath}/pizza/add">Add Pizza</a>
+      	</li>
+      </sec:authorize>
+      
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/pizza/display">Display Pizza</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
-      </li>
+      
+      <sec:authorize access="isAuthenticated()">
+      	<li class="nav-item">
+        	<a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+      	</li>
+      </sec:authorize>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

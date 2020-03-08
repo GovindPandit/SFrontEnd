@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sp" uri="http://www.springframework.org/tags" %>
-<%@page isELIgnored="false"%>
-<!DOCTYPE html>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags"  prefix="sp"%>
+<%@page isELIgnored="false" %>
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -16,18 +16,18 @@
 	<div class="container">
     <h3 class="h3">shopping Demo-6 </h3>
 	    <div class="row">
-	    	<c:forEach items="${pizza}"  var="p">
+	    	<c:forEach items="${cartItems}"  var="cartItem">
 	        <div class="col-md-3 col-sm-6">
 	            <div class="product-grid6">
 	                <div class="product-image6">
-	                    <a href="${pageContext.request.contextPath}/pizza/display/${p.pizzaid}">
+	                    <a href="${pageContext.request.contextPath}/cart/display/${cartItem.cartItemId}">
 	                        <img class="pic-1" src='<sp:url value="/images/pizza.jpg"></sp:url>'>
 	                    </a>
 	                </div>
 	                <div class="product-content">
-	                    <h3 class="title"><a href="#">${p.pizzaName}</a></h3>
-	                    <div class="price">Rs. ${p.price}
-	                        <span>Rs. ${p.price}</span>
+	                    <h3 class="title"><a href="#">${cartItem.pizza.pizzaName}</a></h3>
+	                    <div class="price">Rs. ${cartItem.pizza.price}
+	                        <span>Rs. ${cartItem.pizza.price}</span>
 	                    </div>
 	                </div>
 	                <ul class="social">

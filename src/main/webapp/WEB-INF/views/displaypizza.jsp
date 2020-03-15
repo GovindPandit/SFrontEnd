@@ -21,7 +21,7 @@
 	            <div class="product-grid6">
 	                <div class="product-image6">
 	                    <a href="${pageContext.request.contextPath}/pizza/display/${p.pizzaid}">
-	                        <img class="pic-1" src='<sp:url value="/images/pizza.jpg"></sp:url>'>
+	                        <img class="pic-1" src='<sp:url value="/images/${p.pizzaName}/${p.imagelink}"></sp:url>'>
 	                    </a>
 	                </div>
 	                <div class="product-content">

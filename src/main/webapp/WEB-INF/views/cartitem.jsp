@@ -29,8 +29,8 @@
 						<h4 class="price">current price: <span>Rs. ${cartItem.pizza.price}</span></h4>
 						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 						<div class="action">
-							<button class="add-to-cart btn btn-primary" type="button">Buy</button>
-							<a class="add-to-cart btn btn-secondary" href="${pageContext.request.contextPath}/pizza/delete/${pizza.pizzaid}">Delete</a>
+							<a href="${pageContext.request.contextPath}/buy/index/${cartItem.pizza.pizzaid}" class="add-to-cart btn btn-primary" type="button">Buy</a>
+							<a class="add-to-cart btn btn-secondary" href="${pageContext.request.contextPath}/cart/delete/${cartItem.cartItemId}">Delete</a>
 						</div>
 					</div>
 				</div>

@@ -14,8 +14,13 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container">
-    <h3 class="h3">shopping Demo-6 </h3>
+    	<h3 class="h3">shopping Demo-6 </h3>
 	    <div class="row">
+	    	<c:if test="${empty cartItems }">
+	    		<center><h1>No Cart Items Available. Please Add Pizza to Cart.</h1></center>
+	    	</c:if>
+	    	
+	    	<c:if test="${not empty cartItems }">
 	    	<c:forEach items="${cartItems}"  var="cartItem">
 	        <div class="col-md-3 col-sm-6">
 	            <div class="product-grid6">
@@ -38,6 +43,7 @@
 	            </div>
 	        </div>
 	        </c:forEach>
+	        </c:if>
 	    </div>
 	</div>
 	<hr>

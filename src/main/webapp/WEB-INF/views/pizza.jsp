@@ -32,7 +32,7 @@
 						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 						<div class="action">
 							<a  href="${pageContext.request.contextPath}/cart/add/${pizza.pizzaid}" class="add-to-cart btn btn-warning" type="button">Add To Cart</a>
-							<button class="add-to-cart btn btn-primary" type="button">Buy</button>
+							<a class="add-to-cart btn btn-primary" href="${pageContext.request.contextPath}/buy/index/${pizza.pizzaid}" type="button">Buy</a>
 							
 							<sec:authorize access="hasAuthority('admin') and isAuthenticated()">
 								<a class="add-to-cart btn btn-danger" href="${pageContext.request.contextPath}/pizza/edit/${pizza.pizzaid}">Edit</a>

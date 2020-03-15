@@ -74,4 +74,11 @@ public class CartController
 		map.addAttribute("cartItem",cartService.displayCartById(cartitemid));
 		return "cartitem";
 	}
+	
+	@RequestMapping("/delete/{id}")
+	public String m3(@PathVariable("id") int cartitemid)
+	{
+		cartService.deleteCartItem(cartitemid);
+		return "redirect:/cart/display";
+	}
 }

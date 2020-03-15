@@ -47,6 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  .antMatchers("/pizza/buy/**").authenticated()
       .antMatchers("/pizza/add/**").hasAuthority("admin")
       .antMatchers("/pizza/delete/**").hasAuthority("admin")
+      .antMatchers("/buy/index/**").authenticated()
+      .antMatchers("/cart/add/**").authenticated()
       .antMatchers("/pizza/edit/**").hasAuthority("admin")
       .antMatchers("**/https://test.instamojo.com/**").permitAll()
       .antMatchers("https://7d6965f7.ngrok.io/**").permitAll()

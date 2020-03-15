@@ -12,7 +12,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<c:if test="${p==null}">
-	<spform:form modelAttribute="pizza" action="${pageContext.request.contextPath}/pizza/add" method="post">
+	<spform:form modelAttribute="pizza" action="${pageContext.request.contextPath}/pizza/add" method="post" enctype="multipart/form-data">
 		<div class="formgroup">
 			<label>Enter Pizza Name</label>
 			<spform:input path="pizzaName" class="form-control" placeholder="Enter Name"/>
@@ -28,6 +28,10 @@
 		<div class="formgroup">
 			<label>Enter Pizza Description</label>
 			<spform:textarea path="description" class="form-control" placeholder="Enter Description"/>
+		</div>
+		<div class="formgroup">
+			<label>Select Image</label>
+			<input type="file" name="pizzaimage" accept="image/*" />
 		</div>
 		<div class="formgroup">
 			<input type="submit" value="Add Pizza" class="btn btn-primary btn-block"/>
